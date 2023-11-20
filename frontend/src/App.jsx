@@ -12,7 +12,7 @@ function App() {
 	useEffect(() =>{
 		async function getNotes() {
 			try {
-				const response = await axios.get('/api/notes/');
+				const response = await axios.get('api/notes/');
 				const result = response.data;
 				// console.log(result)
 				setNotes(result);
@@ -47,7 +47,7 @@ function App() {
 	async function deleteNote(id) {	
 
 		try {
-			const response =  await axios.delete(`/api/notes/${notes[id]._id}`)
+			const response =  await axios.delete(`api/notes/${notes[id]._id}`)
 			const result = response.data;
 			// console.log(result)
 		} catch (err) {
