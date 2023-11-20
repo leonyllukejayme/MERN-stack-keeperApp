@@ -7,7 +7,7 @@ import Note from './components/Note';
 
 function App() {
 	const [notes, setNotes] = useState([]);
-	var proxy = 'https://mern-stack-keeperapp.onrender.com' || ''
+	var proxy = import.meta.env.VITE_PROXY || ''
 
 	useEffect(() =>{
 		async function getNotes() {
