@@ -7,12 +7,12 @@ import Note from './components/Note';
 
 function App() {
 	const [notes, setNotes] = useState([]);
-
+	var proxy = 'https://mern-stack-keeperapp.onrender.com' || ''
 
 	useEffect(() =>{
 		async function getNotes() {
 			try {
-				const response = await axios.get('https://mern-stack-keeperapp.onrender.com/api/notes/');
+				const response = await axios.get(proxy + '/api/notes/');
 				const result = response.data;
 				// console.log(result)
 				setNotes(result);
@@ -27,7 +27,7 @@ function App() {
 	async function addNote(note) {	
 		// console.log(note)
 		try {
-			const response =  await axios.post('https://mern-stack-keeperapp.onrender.com/api/notes/', note, {
+			const response =  await axios.post(proxy + '/api/notes/', note, {
 			  headers:{
 				'Content-Type': 'application/json'
 			  }
@@ -47,7 +47,7 @@ function App() {
 	async function deleteNote(id) {	
 
 		try {
-			const response =  await axios.delete(`https://mern-stack-keeperapp.onrender.com/api/notes/${notes[id]._id}`)
+			const response =  await axios.delete(proxy + `/api/notes/${notes[id]._id}`)
 			const result = response.data;
 			// console.log(result)
 		} catch (err) {
