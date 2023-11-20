@@ -4,6 +4,7 @@ import CreateArea from './components/CreateArea';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Note from './components/Note';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 function App() {
 	const [notes, setNotes] = useState([]);
@@ -64,8 +65,8 @@ function App() {
 		<div className='container'>
 			<Header />
 			<CreateArea add={addNote} />
-			<div>
-			{notes.map((note, i) => {
+			<div className='container2'>
+			{notes.length > 0 ? notes.map((note, i) => {
 				return (
 					<Note
 						key={note._id}
@@ -74,7 +75,10 @@ function App() {
 						delete={deleteNote}
 					/>
 				);
-			})}	
+			}) : <div className="empty"> 
+				<TextSnippetIcon className='emptyNotes' style={{ fontSize:"200px" }} />	
+				<h1 className='emptyNotes'>Notes you add appear here</h1>
+			</div> }	
 			</div>
 
 			<Footer />
