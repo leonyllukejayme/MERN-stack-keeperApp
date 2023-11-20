@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:3000",
+  "proxy": "https://mern-stack-keeperapp.onrender.com/",
   "name": "keeper-app",
   "private": true,
   "version": "0.0.0",
