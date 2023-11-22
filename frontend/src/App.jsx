@@ -8,6 +8,7 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 
 function App() {
 	const [notes, setNotes] = useState([]);
+	const [isLoading, setLoading] = useState(true);
 	var proxy = import.meta.env.VITE_PROXY || ''
 
 	useEffect(() =>{
@@ -17,6 +18,7 @@ function App() {
 				const result = response.data;
 				// console.log(result)
 				setNotes(result);
+				setLoading(false);
 			} catch (err) {
 				console.log(err.message)
 			}
@@ -66,7 +68,11 @@ function App() {
 			<Header />
 			<CreateArea add={addNote} />
 			<div className='container2'>
-			{notes.length > 0 ? notes.map((note, i) => {
+			{isLoading === true ? 
+			<div className="empty">
+				<h1 className='emptyNotes'>Loading...</h1>
+			</div>
+			: notes.length > 0 ? notes.map((note, i) => {
 				return (
 					<Note
 						key={note._id}
